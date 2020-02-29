@@ -2,9 +2,9 @@
 Файл с маршрутами приложения.
 """
 
-from flask import render_template, redirect, url_for, request
+from flask import render_template
 
-from app import app, db
+from app import app
 from models import Product, Version
 
 @app.route('/')

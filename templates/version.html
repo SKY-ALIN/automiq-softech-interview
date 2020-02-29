@@ -8,13 +8,19 @@
 
 <h2>Product {{ version.product.name }} (Version {{ version.version }})</h2>
 
+{% if version.product.description %}
+  <p>{{ version.product.description }}</p>
+{% endif %}
+
 {% if version.description %}
   <p>{{ version.description }}</p>
 {% endif %}<br>
 
-<p>Зависимости:</p>
-{% for dependence in version.dependences %}
-<a href="{{ url_for('version', version_id=dependence.id) }}">Product {{ dependence.product.name }} (Ver. {{ dependence.version }})</a><br>
-{% endfor %}
+{% if version.dependences %}
+  <p>Зависимости:</p>
+  {% for dependence in version.dependences %}
+    <a href="{{ url_for('version', version_id=dependence.id) }}">Product {{ dependence.product.name }} (Ver. {{ dependence.version }})</a><br>
+  {% endfor %}
+{% endif %}
 
 {% endblock %}

@@ -12,13 +12,13 @@
 
   <ul>
     {% for version in product.versions %}
-    <li>Версия {{ version.version }}
+    <li><a href="{{ url_for('version', version_id=version.id) }}">Версия {{ version.version }}</a>
 
       {% if version.dependences %}
       Зависимости:
 
       {% for dependence in version.dependences %}
-      {{ dependence.product.name }} {{ dependence.version }}
+        <a href="{{ url_for('version', version_id=dependence.id) }}">{{ dependence.product.name }} {{ dependence.version }}</a>
       {% endfor %}
 
       {% endif %}

@@ -15,9 +15,6 @@ class Product(db.Model):
     description = db.Column(db.Text)
     versions = db.relationship('Version', lazy=True, backref='product')
 
-    def __init__(self, *args, **kwargs):
-        super(Product, self).__init__(*args, **kwargs)
-
 # Таблица описывающая связи между артефактами
 VersionRelationship = db.Table('VersionRelationship',
     db.Column('first_version_id', db.Integer, db.ForeignKey('versions.id')),
@@ -33,9 +30,6 @@ class Version(db.Model):
     description = db.Column(db.Text)
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'))
     dependences = db.relationship('Version', secondary=VersionRelationship,
-                                  primaryjoin=VersionRelationship.c.first_version_id==id,
-                                  secondaryjoin=VersionRelationship.c.second_version_id==id,
+                                  primaryjoin=VersionRelationship.c.first_version_id == id,
+                                  secondaryjoin=VersionRelationship.c.second_version_id == id,
                                   backref='side_dependences')
-
-    def __init__(self, *args, **kwargs):
-        super(Version, self).__init__(*args, **kwargs)

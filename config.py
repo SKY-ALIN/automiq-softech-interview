@@ -2,7 +2,7 @@
 Файл с классом конфигурации для приложения.
 """
 
-class Configuration(object):
+class Configuration():
     # Запускать ли режим отладки
     DEBUG = True
     # Отключение лишнего трекинга
