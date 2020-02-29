@@ -1,22 +1,20 @@
 {% extends 'index.html' %}
 
 {% block title %}
-Зависимости
+Зависимости {{ version.product.name }} {{ version.version }}
 {% endblock %}
 
 {% block content %}
 
-<h2>Product {{ version.product.name }} (Version {{ version.version }})</h2><br>
+<h2>Product {{ version.product.name }} (Version {{ version.version }})</h2>
 
 {% if version.description %}
   <p>{{ version.description }}</p>
-{% endif %}
+{% endif %}<br>
 
 <p>Зависимости:</p>
-{% for dependence in version.get_dependences() %}
-
+{% for dependence in version.dependences %}
 <a href="{{ url_for('version', version_id=dependence.id) }}">Product {{ dependence.product.name }} (Ver. {{ dependence.version }})</a><br>
-
 {% endfor %}
 
 {% endblock %}

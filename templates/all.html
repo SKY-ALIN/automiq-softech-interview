@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Полный список
+{% endblock %}
+
+{% block content %}
+
+<ul>
+  {% for product in products %}
+  <li>Продукт {{ product.name }}</li>
+
+  <ul>
+    {% for version in product.versions %}
+    <li>Версия {{ version.version }}
+
+      {% if version.dependences %}
+      Зависимости:
+
+      {% for dependence in version.dependences %}
+      {{ dependence.product.name }} {{ dependence.version }}
+      {% endfor %}
+
+      {% endif %}
+
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% endfor %}
+</ul>
+
+{% endblock %}

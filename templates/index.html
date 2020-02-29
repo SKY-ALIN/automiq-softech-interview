@@ -11,6 +11,18 @@
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
   <a class="navbar-brand" href="{{ url_for('products') }}">На главную</a>
+	<!-- <a class="navbar-brand" href="{{ url_for('all') }}">Список как в письме</a> -->
+
+	<div class="collapse navbar-collapse" id="navbarCollapse">
+	<ul class="navbar-nav mr-auto">
+	  <li class="nav-item active">
+			<a class="nav-link" href="{{ url_for('all') }}">Список как в письме</a>
+	  </li>
+		<li class="nav-item active">
+			<a class="nav-link" href="https://www.automiq.ru/">Automiq softech</a>
+	  </li>
+	</ul>
+  </div>
 </nav>
 
 <main role="main" class="container">

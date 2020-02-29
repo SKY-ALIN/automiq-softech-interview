@@ -1,34 +1,34 @@
 {% extends 'index.html' %}
 
 {% block title %}
-Список артефактов
+Список продуктов
 {% endblock %}
 
 {% block content %}
 
 <div class="row">
-{% for product in products %}
+  {% for product in products %}
 
-<div class="col-4">
-<div class="card">
-  <img src="https://energybase.ru/processed_images/302x/460166.png" class="card-img-top" alt="Атомик Софт">
-  <div class="card-body">
-    <h5 class="card-title">Product {{ product.name }}</h5>
+  <div class="col-4">
+    <div class="card">
+      <img src="https://energybase.ru/processed_images/302x/460166.png" class="card-img-top" alt="Атомик Софт">
+      <div class="card-body">
+        <h5 class="card-title">Product {{ product.name }}</h5>
 
-    {% if product.description %}
-      <p class="card-text">{{ product.description }}</p>
-    {% endif %}
-    
+        {% if product.description %}
+          <p class="card-text">{{ product.description }}</p>
+        {% endif %}
+
+      </div>
+      <ul class="list-group list-group-flush">
+        {% for version in product.versions %}
+        <li class="list-group-item"><a href="{{ url_for('version', version_id=version.id) }}">Version {{ version.version }}</a></li>
+        {% endfor %}
+      </ul>
+    </div><br>
   </div>
-  <ul class="list-group list-group-flush">
-    {% for version in product.versions %}
-    <li class="list-group-item"><a href="{{ url_for('version', version_id=version.id) }}">Version {{ version.version }}</a></li>
-    {% endfor %}
-  </ul>
-</div><br>
-</div>
 
-{% endfor %}
+  {% endfor %}
 </div>
 
 {% endblock %}

@@ -8,4 +8,4 @@ class Configuration(object):
     # Отключение лишнего трекинга
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # Подключение к БД
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///database.db'
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://test_user:password@localhost/automiq'
